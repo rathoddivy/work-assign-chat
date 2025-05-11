@@ -18,7 +18,7 @@ export default function Dashboard() {
     : getUserTasks(currentUser!.id);
 
   const pendingTasks = tasks.filter(task => task.status === 'pending');
-  const activeTasks = tasks.filter(task => task.status === 'approved' && task.status !== 'completed');
+  const activeTasks = tasks.filter(task => task.status === 'approved');
   const completedTasks = tasks.filter(task => task.status === 'completed');
 
   return (
