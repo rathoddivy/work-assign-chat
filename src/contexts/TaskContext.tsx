@@ -1,4 +1,3 @@
-
 import { createContext, useState, useContext, ReactNode } from 'react';
 import { Task } from '@/types';
 import { tasks as initialTasks } from '@/services/dummyData';
@@ -25,6 +24,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const addTask = (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
     const newTask: Task = {
       ...task,
+      // Convert "unassigned" value back to null
+      assignedTo: task.assignedTo === "unassigned" ? null : task.assignedTo,
       id: (tasks.length + 1).toString(),
       createdAt: new Date(),
       updatedAt: new Date(),
